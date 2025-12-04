@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sakura Japanese Restaurant Booking Form</h1>
+    <div>
+        <div>
+            <label>Last Name:</label>
+            <!-- Textbox input -->
+            <input type="text" id="lastName" />
+        </div>
+        <div>
+            <label>Number Pax:</label>
+            <input type="number" id="numberPax"/>
+        </div>
+        <div>
+            <label>Choose Room Type:</label>
+            <!-- The value of the radio button is a programmer-friendly string (it's all lower case, no spaces, and short form) -->
+            <input type="radio" value="smoking" name="roomType" class="roomType"/><label>Smoking</label>
+            <input type="radio" value="non-smoking" name="roomType" class="roomType"/><label>Non-Smoking</label>
+            <input type="radio" value="dont-care" name="roomType" class="roomType"/><label>Don't Care</label>
+        </div>
+        <button id="submitBtn">Submit</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
