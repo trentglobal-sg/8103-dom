@@ -15,6 +15,19 @@ submitBtn.addEventListener("click", function(){
     )
     let selectedRoomType = selectedRoomTypeRadio.value;
 
-    console.log(lastName, numberPax, selectedRoomType);
+    // use querySelectorAll because >1 checkbox can be checked
+    // we use can [name='<name>'] to select by name
+    let selectedVIPServiceCheckboxes = document.querySelectorAll(`[name="vipServices"]:checked`);
+    let selectedVIPServices = []; // create an empty array to store the values
+    for (let checkbox of selectedVIPServiceCheckboxes) {
+        selectedVIPServices.push(checkbox.value);
+    }
+    
+    let selectedFreeFoodOption = document.querySelector("#freeFood");
+    let selectedFreeFood = selectedFreeFoodOption.value;
+
+
+
+    console.log(lastName, numberPax, selectedRoomType, selectedVIPServices, selectedFreeFood);
 
 })
