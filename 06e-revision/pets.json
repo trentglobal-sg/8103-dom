@@ -1,0 +1,25 @@
+{
+    "pets": [
+        {
+            "id": 1,
+            "name": "Fluffy",
+            "breed": "dog"
+        },
+        {
+            "id": 2,
+            "name": "Gloomy",
+            "breed": "cat"
+        },
+        {
+            "id": 3,
+            "name":"Carrot",
+            "breed": "rabbit"
+        }
+    ],
+    "vets":[
+        {
+            "id": 1,
+            "name":"Dr Lim Chu Kang"
+        }
+    ]
+}
