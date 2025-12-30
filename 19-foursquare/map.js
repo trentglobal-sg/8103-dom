@@ -5,14 +5,14 @@ function initMap(lat, lng, mapElementID) {
     const map = L.map(mapElementID);
     map.setView(coordinate, 13);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    // L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    //     attribution: 'Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //     maxZoom: 19,
+    //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     // }).addTo(map);
+
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+    }).addTo(map);
 
 
     // create a search result layer which will show all the result markers later
@@ -55,5 +55,41 @@ function displayResults(mapConfig, results) {
         })
 
         searchResultElement.appendChild(resultElement);
+    }
+}
+
+function displayRecommendations(mapConfig, results) {
+    // clear all the existing markers in the result layer
+    mapConfig.searchResultLayer.clearLayers();
+    
+
+    const recommendResultsElement = document.querySelector("#recommend-results");
+    recommendResultsElement.innerHTML ="";
+
+    for (let l of results) {
+        console.log("L =", l);
+        const marker = L.marker([l.lat, l.lng]);
+        marker.addTo(mapConfig.searchResultLayer);
+
+        marker.bindPopup(`<h1>${l.name}</h1>
+            <ul>
+                <li>Address: ${l.address}</li>
+                <li>Description: ${l.description}</li>
+                <li>Website URL: ${l.website_url}</li>
+            </ul>
+            
+        `);
+
+        const searchResultElement = document.createElement('div');
+        searchResultElement.classList.add('result');
+        searchResultElement.innerHTML = l.name;
+
+        searchResultElement.addEventListener("click", function(){
+            mapConfig.map.flyTo([l.lat, l.lng], 16);
+            marker.openPopup();
+        })
+        
+        recommendResultsElement.appendChild(searchResultElement);
+
     }
 }

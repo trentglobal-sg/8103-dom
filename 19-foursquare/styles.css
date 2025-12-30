@@ -13,7 +13,7 @@
     z-index: 1000;
 }
 
-#search-results {
+#search-results, #recommend-results {
     background-color: rgba(255, 255, 255, 0.5);
     max-height: 300px;
     overflow-y: scroll;
@@ -31,4 +31,29 @@
 
 .title {
     background-color: yellow;
+}
+
+.tabs {
+    margin-bottom: 10px;
+}
+
+.tab-tbn {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* all elements with the class .tab-btn AND active */
+.tab-btn.active {
+    background-color: #333;
+    color: white;
+}
+
+/* by default, if an element only have tab-content class, we hide it */
+.tab-content {
+    display: none;
+}
+
+/* for elements with both the tab-content and active class, we will display */
+.tab-content.active {
+    display: block;
 }
