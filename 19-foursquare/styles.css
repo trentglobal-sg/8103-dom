@@ -12,3 +12,23 @@
     left: 60px;
     z-index: 1000;
 }
+
+#search-results {
+    background-color: rgba(255, 255, 255, 0.5);
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.result {
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.result:hover {
+    font-weight: bold;
+}
+
+.title {
+    background-color: yellow;
+}

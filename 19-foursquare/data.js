@@ -8,12 +8,13 @@ async function search(lat, lng, query) {
         },
         "params": {
             ll,
-            query
+            query,
+            limit: 50,
+            radius: 2000
         }
 
     };
 
     const response = await axios.get(API_BASE_URL + "/api/places/search", config);
-    console.log(response.data);
     return response.data;
 }
